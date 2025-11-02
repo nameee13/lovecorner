@@ -1,0 +1,152 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Blooming Corner ❤️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:wght@500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      background: linear-gradient(135deg, #fff0f7, #fde8ef, #fffafc);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      font-family: 'Playfair Display', serif;
+      color: #50323a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-family: 'Parisienne', cursive;
+      font-size: 3.8em;
+      color: #b23a68;
+      text-shadow: 0 3px 10px rgba(255, 182, 193, 0.4);
+      margin-bottom: 20px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    #message {
+      font-size: 1.5em;
+      color: #4a3c41;
+      max-width: 600px;
+      margin-bottom: 35px;
+      line-height: 1.6;
+      animation: fadeIn 2s ease;
+    }
+
+    button {
+      background-color: #b23a68;
+      color: #fffafc;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 40px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 0.5px;
+      box-shadow: 0 6px 20px rgba(178, 58, 104, 0.2);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background-color: #972d58;
+      box-shadow: 0 8px 25px rgba(178, 58, 104, 0.3);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      color: #7a5a63;
+      font-size: 1em;
+      letter-spacing: 0.5px;
+      font-style: italic;
+    }
+
+    .bouquet {
+      position: absolute;
+      bottom: 60px;
+      width: 100%;
+      text-align: center;
+      font-size: 2em;
+    }
+
+    .flower {
+      display: inline-block;
+      margin: 0 5px;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: bloom 0.8s ease forwards;
+    }
+
+    @keyframes bloom {
+      from { opacity: 0; transform: scale(0.8) rotate(-20deg); }
+      to { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>The Blooming Corner 🌸</h1>
+  <p id="message">Each click is a petal from my heart — blooming just for you.</p>
+  <button onclick="bloomMessage()">Bloom a Message</button>
+
+  <div class="bouquet" id="bouquet"></div>
+
+  <footer>with love, <b>@nemooooo13</b> ❤️</footer>
+
+  <script>
+    const messages = [
+  "🌸 You deserve a soft morning and a quiet heart.",
+  "🌷 Some flowers bloom only after the storm.",
+  "🍃 You are the calm before poetry happens.",
+  "🕊️ The universe writes love letters through sunsets.",
+  "🌹 You are made of stardust and gentle fire.",
+  "✨ Don’t rush the magic — even the moon takes time to rise.",
+  "💌 Your soul smells like lavender and old songs.",
+  "🌼 The world slows down when you smile softly.",
+  "🪞 You’re art — not meant to be understood, only felt.",
+  "🌙 Somewhere, the stars whisper your name tonight."
+];
+
+    const flowers = ["🌸", "🌷", "🌺", "🌼", "💮", "🌹"];
+    let bouquetCount = 0;
+
+    function bloomMessage() {
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById('message').textContent = randomMessage;
+
+      const flower = document.createElement('span');
+      flower.classList.add('flower');
+      flower.textContent = flowers[bouquetCount % flowers.length];
+      document.getElementById('bouquet').appendChild(flower);
+      bouquetCount++;
+    }
+  </script>
+</body>
+</html>
